@@ -1,0 +1,48 @@
+# Gate Crossing Configuration File
+# 控制参数
+gate_kp_x: 0.4           # X方向比例增益
+gate_ki_x: 0.01          # X方向积分增益
+gate_kd_x: 0.05          # X方向微分增益
+gate_kp_y: 0.3           # Y方向比例增益
+gate_ki_y: 0.008         # Y方向积分增益
+gate_kd_y: 0.03          # Y方向微分增益
+gate_base_speed: 0.2     # 基础前进速度 (m/s)
+gate_max_speed: 0.3      # 最大速度 (m/s)
+gate_min_speed: 0.1      # 最小速度 (m/s)
+gate_align_thresh: 0.1   # 对齐阈值
+gate_close_dist: 2.0     # 接近门的最小距离 (m)
+gate_target_distance: 4.0  # 目标穿门总距离 (m)
+
+# 检测参数
+gate_black_thresh: 50    # 黑色阈值 (0-255)
+gate_min_area: 500       # 最小轮廓面积 (像素)
+gate_min_aspect_ratio: 2.0   # 最小高宽比
+gate_max_aspect_ratio: 20.0  # 最大高宽比
+gate_min_gap_ratio: 0.1  # 最小间隙/宽度比
+gate_max_gap_ratio: 5.0  # 最大间隙/宽度比
+gate_max_height_diff_ratio: 0.3  # 最大高度差异比例
+gate_max_y_center_diff_ratio: 0.3  # 最大Y中心偏移比例
+
+# 相机参数（如果已知）
+# 焦距（像素），用于距离估计
+camera_focal_length_px: 500.0
+# 图像尺寸
+image_width: 640
+image_height: 480
+
+# 门的实际物理尺寸 (m)
+gate_real_height: 3.0      # 门高度
+gate_pillar_width: 0.23   # 单门柱宽度
+gate_gap_width: 0.3       # 门间隙宽度
+gate_total_width: 0.76    # 门总宽度 (0.23+0.3+0.23)
+
+# 控制参数
+control_rate: 20.0        # 控制频率 (Hz)
+yaw_search_rate: 0.3      # 搜索旋转速度 (rad/s)
+search_timeout: 30.0     # 搜索超时时间 (s)
+max_total_distance: 10.0  # 最大总飞行距离 (m)
+
+# 调试参数
+enable_debug_image: true  # 是否发布调试图像
+debug_image_topic: "/gate_debug_image"  # 调试图像话题
+log_frequency: 10         # 日志输出频率 (控制循环次数)
