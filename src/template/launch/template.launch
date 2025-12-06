@@ -1,5 +1,14 @@
+<?xml version="1.0"?>
 <launch>
-  <node pkg="template" type="template" name="" output="screen">
+    <!-- 加载参数文件 -->
     <rosparam command="load" file="$(find template)/config/template.yaml" />
-  </node>
+    <rosparam command="load" file="$(find template)/config/collision_avoidance.yaml" />
+    <rosparam command="load" file="$(find template)/config/gate_crossing.yaml" />
+    
+    <!-- 启动主节点 -->
+    <node pkg="template" type="template" name="template" output="screen">
+        <!-- 可选的参数覆盖 -->
+        <param name="err_max" value="0.2" type="double" />
+        <param name="if_debug" value="0" type="double" />
+    </node>
 </launch>

@@ -18,9 +18,43 @@
 #include <std_msgs/Empty.h>
 #include <std_msgs/Int32.h>
 
+#include <sensor_msgs/LaserScan.h>
+#include <math_utils.h>
+#include "collision_avoidance.h" 
+#include "command_to_mavros.h"
+
+#include "gate_crossing.h"
+
+// collision_aviudance
+extern float R_outside, R_inside;
+extern float p_R, p_r;
+extern float distance_c, angle_c;
+extern float distance_cx, distance_cy;
+extern float vel_collision[2];
+extern float vel_collision_max;
+extern float p_xy;
+extern float vel_track[2];
+extern float vel_track_max;
+extern std_msgs::Bool flag_collision_avoidance;
+extern float vel_sp_body[2];
+extern float vel_sp_ENU[2];
+extern float vel_sp_max;
+extern int range_min, range_max;
+extern int mission_num;
+extern float if_debug;
+extern float err_max;
+
+//gate_crossing
+extern GateCrossing* gate_crossing;
+extern bool gate_crossing_active;
+extern bool gate_crossing_complete;
+extern float total_distance;
+extern ros::Time gate_crossing_start_time;
+
+
 using namespace std;
 
-#define ALTITUDE 1.2f
+#define ALTITUDE 1.5f
 
 mavros_msgs::PositionTarget setpoint_raw;
 
@@ -128,3 +162,10 @@ bool precision_land()
     }
     return false;
 }
+
+
+
+void local_pos_cb(const nav_msgs::Odometry::ConstPtr &msg);
+void print_param();
+
+
