@@ -585,11 +585,11 @@ case 5:
             break;
         }
         
-        // 向左移动到(35, 3) - 位置控制
+        // 向左移动到(35, -1) - 位置控制
           case 12:
-    if (mission_pos_cruise(35.0f, 3.0f, ALTITUDE, 0, err_max))
+    if (mission_pos_cruise(35, -1, ALTITUDE, 0, err_max))
     {
-        ROS_INFO("到达(35, 3.0)，进入case13");
+        ROS_INFO("到达(35, -1.0)，进入case13");
         mission_num = 13;
         last_request = ros::Time::now();
     }
@@ -597,7 +597,7 @@ case 5:
     
                 case 13:
       // 保持当前位置悬停
-      mission_pos_cruise(35, 3, ALTITUDE, 0, err_max);
+      mission_pos_cruise(35, -1, ALTITUDE, 0, err_max);
       
       // 检查是否已经悬停5秒
       if (ros::Time::now() - last_request > ros::Duration(5.0))
