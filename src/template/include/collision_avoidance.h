@@ -4,7 +4,7 @@
 #include <ros/ros.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <sensor_msgs/LaserScan.h>
-#include <std_msgs/Bool.h>  // 添加这行
+#include <std_msgs/Bool.h>  //
 #include <Eigen/Eigen>
 #include <iostream>
 
@@ -16,7 +16,7 @@ public:
     
     bool initialize();
     bool calculateAvoidanceVelocity(float target_x, float target_y, float& output_vel_x, float& output_vel_y);
-    bool isAvoidanceActive() const { return flag_collision_avoidance_; }  // 修改这行
+    bool isAvoidanceActive() const { return flag_collision_avoidance_; }  // 
     void printAvoidanceInfo();
     void printParameters();
 
@@ -30,7 +30,7 @@ private:
     float saturationFunction(float data, float max_val);
     void coordinateRotation(float yaw_angle, float input[2], float output[2]);
     void avoidanceAlgorithm(float target_x, float target_y);
-    void loadParameters();  // 添加参数加载方法
+    void loadParameters();  // 参数加载方法
     
     // ROS相关
     ros::NodeHandle& nh_;

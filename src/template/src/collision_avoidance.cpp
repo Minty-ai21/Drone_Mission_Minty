@@ -3,9 +3,9 @@
 #include <iostream>
 
 CollisionAvoidance::CollisionAvoidance(ros::NodeHandle& nh) 
-    : nh_(nh), initialized_(false), init_position_set_(false), flag_collision_avoidance_(false)  // 初始化flag
+    : nh_(nh), initialized_(false), init_position_set_(false), flag_collision_avoidance_(false) 
 {
-    // 初始化数组
+    
     for(int i = 0; i < 2; i++) {
         vel_track_[i] = 0;
         vel_collision_[i] = 0;
@@ -16,7 +16,7 @@ CollisionAvoidance::CollisionAvoidance(ros::NodeHandle& nh)
 
 CollisionAvoidance::~CollisionAvoidance()
 {
-    // 清理资源
+    
 }
 
 bool CollisionAvoidance::initialize()
@@ -178,7 +178,7 @@ void CollisionAvoidance::coordinateRotation(float yaw_angle, float input[2], flo
 
 void CollisionAvoidance::avoidanceAlgorithm(float target_x, float target_y)
 {
-    // ========== 1. 避障激活判断 ==========
+    
     flag_collision_avoidance_ = (distance_c_ < R_outside_ && distance_c_ > 0.1);
     
     // 如果没有障碍物威胁，只计算追踪速度
@@ -209,7 +209,7 @@ void CollisionAvoidance::avoidanceAlgorithm(float target_x, float target_y)
         return;
     }
     
-    // ========== 2. 有障碍物威胁，执行完整避障算法 ==========
+    // 有障碍物威胁
     
     // 计算相对目标位置
     float relative_target_x = target_x + init_position_x_;
